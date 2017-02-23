@@ -2,7 +2,7 @@ from inout import *
 from validation import validate
 from latency import calculate_latency
 
-filename = "videos_worth_spreading.in"
+filename = "trending_today.in"
 
 data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data(filename)
 # print(data_config["caches"])
