@@ -2,8 +2,8 @@ from inout import *
 from validation import validate
 from latency import calculate_latency
 
-data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data("me_at_the_zoo.in")
-print(data_config["caches"])
+data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data("trending_today.in")
+# print(data_config["caches"])
 
 best_result = 0
 best_methods = list()
@@ -26,7 +26,7 @@ for i in range(0, 10):
 					if validate(cache_info, video_config, (request_video_id, cache)) == True:
 						connected = True
 						cache_info[cache].append(request_video_id)
-						print("cache", cache, request_video_id)
+						# print("cache", cache, request_video_id)
 						break
 
 	result = calculate_latency(cache_info, endpoint_connections, endpoint_datacenter_latency,

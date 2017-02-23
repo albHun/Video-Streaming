@@ -10,9 +10,9 @@ def validate(cache_storage, video_size, new_storing_command):
 	stored = [ video_size[video] for video in cache_storage[new_storing_command[1]]]
 	used_space = np.sum(stored)
 	capacity = data_config["cache_size"]
-	print(video_size[new_storing_command[0]], used_space, capacity)
+	# print(video_size[new_storing_command[0]], used_space, capacity)
 	if (video_size[new_storing_command[0]] + used_space) > capacity:
-		print("f")
+		# print("f")
 		return False
-	print("t")
+	# print("t")
 	return True
