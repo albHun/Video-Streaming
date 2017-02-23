@@ -1,5 +1,4 @@
-def calculate_latency(cache_server_info, endpoint_connections, endpoint_datacenter_latency,
-						endpoint_cache_latencies, requests):
+def calculate_latency(cache_server_info, endpoints, requests):
 	total_latency = 0
 	total_requests = 0
 	original_latency = 0
