@@ -37,10 +37,10 @@ def load_data(filename):
     video_config = raw_data[1]
 
     # delete first two lines
-    raw_data[0:1] = []
+    del raw_data[0]
+    del raw_data[0]
 
     endpoints = list()
-    endpoint = dict()
     cache_connections = 0
     datacentre_latency = 0
     index = 0
@@ -49,16 +49,17 @@ def load_data(filename):
     while endpoint_count < data_config["endpoints"]:
         #end point config line 
         line0 = raw_data[index]
+        endpoint = dict()
         endpoint["datacentre"] = line0[0]
         cache_connections = line0[1]
 
         #for each cache config
-        for j in range(index, index + cache_connections + 1):
+        for j in range(index + 1, index + cache_connections + 1):
             line = raw_data[j] # line = {cache_id} {latency}
             endpoint[line[0]] = line[1]
         
         endpoints.append(endpoint)
-        index += cache_connections
+        index += cache_connections + 1
         endpoint_count +=1
     
 
@@ -71,5 +72,8 @@ def load_data(filename):
     return data_config, video_config, endpoints, requests
 
 
-def output_data(caches):
-    
+def output_data(caches, filename):
+    pass
+
+
+print(load_data("me_at_the_zoo.in"))
