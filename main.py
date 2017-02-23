@@ -9,7 +9,6 @@ best_result = 0
 best_methods = list()
 for i in range(0, 10):
 	cache_info = [[]] * data_config["caches"]
-	print(len(cache_info))
 	for request in requests:
 		request_endpoint = request[1]
 		request_video_id = request[0]
@@ -17,7 +16,6 @@ for i in range(0, 10):
 		endpoint = endpoints[request_endpoint]
 		for cache in endpoint.keys() :
 			if cache != "datacentre":
-				print(cache)
 				videos_stored = cache_info[cache]
 				if request_video_id in videos_stored:
 					connected = True
@@ -25,9 +23,10 @@ for i in range(0, 10):
 		if connected == False:
 			for cache in endpoint:
 				if cache != "datacentre":
-					if validate(cache_info, video_config, (request_video_id, cache)):
+					if validate(cache_info, video_config, (request_video_id, cache)) == True:
 						connected = True
 						cache_info[cache].append(request_video_id)
+						print("cache", cache, request_video_id)
 						break
 
 	result = calculate_latency(cache_info, endpoint_connections, endpoint_datacenter_latency,

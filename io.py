@@ -112,8 +112,8 @@ def output_data(caches, filename):
 
 
 
-data_config, video_config, endpoints, endpoint_connections, endpoint_datacentre_latency, requests = load_data("me_at_the_zoo.in")
-print(endpoint_connections)
+#data_config, video_config, endpoints, endpoint_connections, endpoint_datacentre_latency, requests = load_data("me_at_the_zoo.in")
+#print(endpoint_connections)
 
 # test_caches = [
 #     [2],
