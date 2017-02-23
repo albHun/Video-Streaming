@@ -5,8 +5,8 @@ import numpy as np
 # video_size is a list of videos with their sizes in MB
 # new_storing_command is a tuple of (video_id, cache_id)
 
-def validate(cache_storage, video_size, new_storing_command):
-	data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data("me_at_the_zoo.in")
+def validate(cache_storage, video_size, new_storing_command, data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests):
+	# data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data("me_at_the_zoo.in")
 	stored = [ video_size[video] for video in cache_storage[new_storing_command[1]]]
 	used_space = np.sum(stored)
 	capacity = data_config["cache_size"]

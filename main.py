@@ -2,12 +2,14 @@ from inout import *
 from validation import validate
 from latency import calculate_latency
 
-data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data("trending_today.in")
+filename = "trending_today.in"
+
+data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests = load_data(filename)
 # print(data_config["caches"])
 
 best_result = 0
 best_methods = list()
-for i in range(0, 10):
+for i in range(0, 1):
 	cache_info = [[]] * data_config["caches"]
 	for request in requests:
 		request_endpoint = request[1]
@@ -23,7 +25,7 @@ for i in range(0, 10):
 		if connected == False:
 			for cache in endpoint:
 				if cache != "datacentre":
-					if validate(cache_info, video_config, (request_video_id, cache)) == True:
+					if validate(cache_info, video_config, (request_video_id, cache), data_config, video_config, endpoints, endpoint_connections, endpoint_datacenter_latency, requests) == True:
 						connected = True
 						cache_info[cache].append(request_video_id)
 						# print("cache", cache, request_video_id)
