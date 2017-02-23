@@ -76,4 +76,4 @@ def output_data(caches, filename):
     pass
 
 
-print(load_data("me_at_the_zoo.in"))
+# print(load_data("me_at_the_zoo.in"))
