@@ -1,4 +1,6 @@
 # Hashcode - randomisation implementation
 
-## Naming conventions
+## Naming conventions and data structure
+
+
 
