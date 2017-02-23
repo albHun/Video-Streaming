@@ -5,7 +5,7 @@ def load_data(filename):
 
 
     """
-        Data returned: data_config, video_config, endpoints, requests
+        Data returned: data_config, video_config, endpoints, endpoint_connections, endpoint_datacentre_latency, requests
 
         each endpoint is dictionary with the cache_id being the key and the latency being the value, 
         the latency datacentre is stored in a key "datacentre"
@@ -62,6 +62,24 @@ def load_data(filename):
         index += cache_connections + 1
         endpoint_count +=1
     
+    # process data to give endpoint_connections
+    endpoint_connections = list()
+    
+    cache_connections = list()
+    for i in range(len(endpoints)):
+        cache_connections = list()
+        endpoint = endpoints[i]
+        for cache_id in endpoint.keys():
+            if cache_id != "datacentre":
+                cache_connections.append(cache_id)
+        endpoint_connections.append(cache_connections)
+
+
+    # process data to give endpoint_datacentre_latency
+    endpoint_datacentre_latency = list()
+    for i in range(len(endpoints)):
+        endpoint = endpoints[i] 
+        endpoint_datacentre_latency.append(endpoint["datacentre"])
 
     # load requests data
     requests = list()
@@ -69,7 +87,7 @@ def load_data(filename):
         line = raw_data[i]
         requests.append( (line[0], line[1], line[2]) )
 
-    return data_config, video_config, endpoints, requests
+    return data_config, video_config, endpoints, endpoint_connections, endpoint_datacentre_latency, requests
 
 
 def output_data(caches, filename):
@@ -93,7 +111,9 @@ def output_data(caches, filename):
 	    text_file.write(data)
 
 
-# print(load_data("me_at_the_zoo.in"))
+
+data_config, video_config, endpoints, endpoint_connections, endpoint_datacentre_latency, requests = load_data("me_at_the_zoo.in")
+print(endpoint_connections)
 
 # test_caches = [
 #     [2],
