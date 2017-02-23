@@ -4,9 +4,9 @@
 
 - Output data structure: each out put is a list of lists:
 ```
-    [
-        [1, 5]  // element 0 is the videos that should be stored in cache server 0
-        [2] // video 2 should be stored into element 1
-
-    ]
+    test_caches = [
+                    [2],    // server 0 stores video 2
+                    [3,1],  // server 1 stored videos 3 and 1
+                    [0,1]   //Cache server 2 contains videos 0 and 1.
+                ]
 ```
