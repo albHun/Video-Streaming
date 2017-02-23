@@ -73,7 +73,31 @@ def load_data(filename):
 
 
 def output_data(caches, filename):
-    pass
+    """
+        Prints the output data to file 
+        caches structure: list of videos to be stored into a server specified by the key
+        eg: test_caches = [
+                    [2],    // server 0 stores video 2
+                    [3,1],  // server 1 stored videos 3 and 1
+                    [0,1]   //Cache server 2 contains videos 0 and 1.
+                ]
+    """
+    cache_count = len(caches)
+    data = str(cache_count) + "\n"
+    for i in range(len(caches)):
+        data += str(i) + " "
+        for j in range(len(caches[i])):
+            data += str( caches[i][j] ) + " "
+        data += "\n"
+    with open(filename, "w") as text_file:
+	    text_file.write(data)
 
 
 # print(load_data("me_at_the_zoo.in"))
+
+# test_caches = [
+#     [2],
+#     [3,1],
+#     [0,1]
+# ]
+# output_data(test_caches, "test.out")
